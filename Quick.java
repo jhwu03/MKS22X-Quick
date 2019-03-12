@@ -19,16 +19,22 @@ public class Quick{
      int p = data[start];
      pivot = start;
      start ++;
-     while(start <= end){
+     while(start < end){
        if(data[start] > p){
          swap(data,start,end);
          end--;
        }else if(data[start] < p){
+         start++;
+       }
+     }
+     if(start == end){
+       if(data[start] < p){
          swap(data,pivot,start);
-         start++;
-         pivot++;
+         int temp = pivot;
+         pivot = start;
+         start = temp;
        }else{
-         start++;
+         return start;
        }
      }
      return pivot;
