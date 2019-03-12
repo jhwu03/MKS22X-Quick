@@ -1,6 +1,14 @@
 public class Quick{
-  public static int quickSelect(){
-    return 1;
+  public static int quickSelect(int[] data,int k){
+    int ans = partition(data,0,data.length - 1);
+    while(ans != k){
+      if(ans < k){
+        ans = partition(data,ans,data.length - 1);
+      }else{
+        ans = partition(data,0,ans);
+      }
+    }
+    return data[ans];
   }
 
    public static int partition(int [] data, int start, int end) {
