@@ -41,7 +41,9 @@ public class Quick{
      }else{
        pivot = (start + end) / 2;
      }
-     swap(data,pivot,start);
+     int temp = data[pivot];
+     data[pivot] = data[start];
+     data[start] = temp;
      pivot = start;
      start++;
      while(start != end) {
