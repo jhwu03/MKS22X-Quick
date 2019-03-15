@@ -14,14 +14,14 @@ public class Quick{
   }
 
    public static int partition(int [] data, int start, int end) {
-     int range = end - start + 1;
-     int pivot = (int) Math.abs(Math.random() * range);
-     pivot = pivot + start;
-     swap(data,start,pivot);
-     int p = data[start];
+     int pivot = (int)(Math.random() * (end - start)) + start;
+     int p = data[pivot];
+     int temp = data[start];
+     data[start] = p;
+     data[pivot] = temp;
      pivot = start;
      start ++;
-     while(start <= end){
+     while(start != end){
        if(data[start] > p){
          swap(data,start,end);
          end--;
@@ -29,17 +29,12 @@ public class Quick{
          start++;
        }
      }
-     if(start == end){
-       if(data[start] < p){
-         swap(data,pivot,start);
-         int temp = pivot;
-         pivot = start;
-         start = temp;
-       }else{
-         return start;
-       }
+     if(data[pivot] < data[start]){
+       start--;
      }
-     return pivot;
+       data[pivot] = data[start] ;
+       data[start] = p ;
+       return start ;
    }
    public static void swap(int[] data,int r, int c) {
      int temp = data[r];
