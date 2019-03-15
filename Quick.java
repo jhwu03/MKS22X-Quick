@@ -17,17 +17,17 @@ public class Quick{
 
    public static void quicksort(int[] data) {
      if(data.length > 0){
-     quicksort(data, 0, data.length - 1);
+     quicksortH(data, 0, data.length - 1);
      }
    }
 
-   public static void quicksort(int[] data, int start, int end) {
+   public static void quicksortH(int[] data, int start, int end) {
      if (start >= end) {
        return;
      }
      int pivot = partition(data, start, end);
-     quicksort(data, start, pivot-1);
-     quicksort(data, pivot+1, end);
+     quicksortH(data, start, pivot-1);
+     quicksortH(data, pivot+1, end);
    }
 
   public static int partition (int [] data, int start, int end){
@@ -57,6 +57,7 @@ public class Quick{
          start++;
        }
      }
+     // swap at the end when it cime down to onw number
      if(data[pivot] < data[start]) {
        swap(data,start - 1, pivot);
        return start - 1;
