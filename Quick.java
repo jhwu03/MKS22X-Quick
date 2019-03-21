@@ -17,7 +17,7 @@ public class Quick{
 
    public static void quicksort(int[] data) {
      if(data.length > 0){
-     quicksortH(data, 0, data.length - 1);
+     quicksortO(data, 0, data.length - 1);
      }
    }
 
@@ -68,6 +68,28 @@ public class Quick{
        return start;
      }
   }
+
+  public static void quicksortO(int[] data, int start, int end) {
+    if (end - start <= 25) {
+      insertionsort(data,start,end);
+      return;
+    }
+    int pivot = partition(data, start, end);
+    quicksortH(data, start, pivot-1);
+    quicksortH(data, pivot+1, end);
+  }
+
+  public static void insertionsort(int[] data, int lo, int hi){
+  for (int i = lo + 1; i <= hi; ++i){
+    int value = data[i];
+    int j = i - 1;
+    while (j >= lo && data[j] > value){
+      data[j + 1] = data[j];
+      j--;
+    }
+      data[j + 1] = value;
+  }
+}
 
     public static void swap(int[] data,int r, int c) {
       int temp = data[r];
